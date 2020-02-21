@@ -1,0 +1,11 @@
+# redis
+spring:
+  redis:
+    host: 192.168.100.101
+    port: 5379
+    password: test
+    pool:
+      maxIdle: 100
+      minIdle: 10
+      maxActive: 50
+      maxWait: 3000
