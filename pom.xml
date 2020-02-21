@@ -12,6 +12,7 @@
         <module>spring-security</module>
         <module>spring-amqp</module>
         <module>spring-redis</module>
+        <module>consumer-manager</module>
     </modules>
 
     <name>spring-boot-projects</name>

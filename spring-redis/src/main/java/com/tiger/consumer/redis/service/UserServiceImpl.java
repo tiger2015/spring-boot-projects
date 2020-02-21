@@ -1,7 +1,7 @@
-package com.tiger.springboot.redis.service;
+package com.tiger.consumer.redis.service;
 
-import com.tiger.springboot.redis.dao.UserDao;
-import com.tiger.springboot.redis.entity.User;
+import com.tiger.consumer.redis.dao.UserDao;
+import com.tiger.consumer.redis.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import util.Object2Map;

@@ -1,4 +1,4 @@
-package com.tiger.springboot.redis;
+package com.tiger.consumer.redis;
 
 import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;

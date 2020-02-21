@@ -1,6 +1,6 @@
-import com.tiger.springboot.redis.Application;
-import com.tiger.springboot.redis.entity.User;
-import com.tiger.springboot.redis.service.UserService;
+import com.tiger.consumer.redis.Application;
+import com.tiger.consumer.redis.entity.User;
+import com.tiger.consumer.redis.service.UserService;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

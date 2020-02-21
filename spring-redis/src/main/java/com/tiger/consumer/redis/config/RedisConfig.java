@@ -1,4 +1,4 @@
-package com.tiger.springboot.redis.config;
+package com.tiger.consumer.redis.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

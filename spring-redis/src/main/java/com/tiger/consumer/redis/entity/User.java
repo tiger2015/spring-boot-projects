@@ -1,4 +1,4 @@
-package com.tiger.springboot.redis.entity;
+package com.tiger.consumer.redis.entity;
 
 public class User {
 

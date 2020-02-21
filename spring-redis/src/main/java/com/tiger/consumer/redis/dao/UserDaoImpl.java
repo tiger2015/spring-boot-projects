@@ -1,4 +1,4 @@
-package com.tiger.springboot.redis.dao;
+package com.tiger.consumer.redis.dao;
 
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
