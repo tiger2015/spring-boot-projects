@@ -1,14 +1,16 @@
-import com.tiger.consumer.redis.Application;
+package com.tiger;
+
+import com.tiger.consumer.redis.RedisApplication;
 import com.tiger.consumer.redis.entity.User;
 import com.tiger.consumer.redis.service.UserService;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import util.Object2Map;
+import com.tiger.consumer.redis.util.Object2Map;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = {Application.class})
+@SpringBootTest(classes = {RedisApplication.class})
 public class Test {
 
     @Autowired
@@ -24,7 +26,7 @@ public class Test {
    public void insertUser(){
         User user = new User();
         user.setName("test");
-        user.setSalery(1000.0D);
+        user.setSalary(1000.0D);
         user.setAge(23);
         userService.addUser(user);
    }
@@ -33,7 +35,7 @@ public class Test {
    public void getUser(){
        User user = userService.getUser("test");
        System.out.println(user.getName());
-       System.out.println(user.getSalery());
+       System.out.println(user.getSalary());
        System.out.println(user.getAge());
    }
 

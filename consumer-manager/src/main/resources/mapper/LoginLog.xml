@@ -10,7 +10,7 @@
     <resultMap id="loginLog" type="com.tiger.consumer.entity.LoginLog">
         <id column="id" property="id"/>
         <result property="userName" column="user_name"/>
-        <result property="loginTime" column="login_time" javaType="java.util.Date"/>
+        <result property="loginTime" column="login_time" javaType="java.com.tiger.consumer.redis.util.Date"/>
         <result property="url" column="url"/>
         <result property="loginIp" column="ip"/>
     </resultMap>

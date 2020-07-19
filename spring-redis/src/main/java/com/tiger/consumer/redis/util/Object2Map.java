@@ -1,4 +1,4 @@
-package util;
+package com.tiger.consumer.redis.util;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;

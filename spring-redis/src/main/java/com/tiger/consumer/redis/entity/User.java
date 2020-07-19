@@ -1,10 +1,13 @@
 package com.tiger.consumer.redis.entity;
 
-public class User {
+import java.io.Serializable;
 
+public class User implements Serializable {
+
+    private static final long serialVersionUID = 3515167461747527353L;
     private String name;
     private int age;
-    private double salery;
+    private double salary;
 
     public String getName() {
         return name;
@@ -22,11 +25,11 @@ public class User {
         this.age = age;
     }
 
-    public double getSalery() {
-        return salery;
+    public double getSalary() {
+        return salary;
     }
 
-    public void setSalery(double salery) {
-        this.salery = salery;
+    public void setSalary(double salary) {
+        this.salary = salary;
     }
 }
