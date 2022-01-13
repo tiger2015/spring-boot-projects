@@ -4,3 +4,5 @@
 /.idea/vcs.xml
 /spring-boot-projects.iml
 !/.idea/
+/.idea/
+/logs/
