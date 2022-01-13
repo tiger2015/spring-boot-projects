@@ -4,10 +4,10 @@ import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 import com.tiger.consumer.redis.dao.UserDao;
 import com.tiger.consumer.redis.entity.User;
+import com.tiger.consumer.redis.util.Object2MapUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.tiger.consumer.redis.util.Object2Map;
 
 import java.util.Map;
 
@@ -20,50 +20,29 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean addUser(User user) {
-        try {
-            Preconditions.checkNotNull(user, "用户为空");
-            Map<String, Object> map = Object2Map.object2Map(user);
-            return userDao.addUser(user.getName(), map);
-        } catch (Exception e) {
-            log.error("add user error", e);
-        }
-        return false;
+        Preconditions.checkNotNull(user, "用户为空");
+        Map<String, Object> map = Object2MapUtil.objectToMapByJson(user, User.class);
+        return userDao.addUser(user.getName(), map);
     }
 
     @Override
     public boolean updateUser(User user) {
-        try {
-            Preconditions.checkNotNull(user, "用户为空");
-            if (Strings.isNullOrEmpty(user.getName())) {
-                return false;
-            }
-            Map<String, Object> map = Object2Map.object2Map(user);
-            return userDao.updateUser(user.getName(), map);
-        } catch (Exception e) {
-            log.error("update user error", e);
-        }
-        return false;
+        Preconditions.checkNotNull(user, "用户为空");
+        Preconditions.checkArgument(!Strings.isNullOrEmpty(user.getName()), "用户名为空");
+        Map<String, Object> map = Object2MapUtil.objectToMapByJson(user, User.class);
+        return userDao.updateUser(user.getName(), map);
     }
 
     @Override
     public boolean removeUser(String id) {
-        if (Strings.isNullOrEmpty(id)) {
-            return false;
-        }
+        Preconditions.checkArgument(!Strings.isNullOrEmpty(id), "id为空");
         return userDao.deleteUser(id);
     }
 
     @Override
     public User getUser(String id) {
-        if (Strings.isNullOrEmpty(id)) {
-            return null;
-        }
-        try {
-            Map<Object, Object> user = userDao.getUser(id);
-            return Object2Map.map2Object(user, User.class);
-        } catch (Exception e) {
-            log.error("get user error", e);
-        }
-        return null;
+        Preconditions.checkArgument(!Strings.isNullOrEmpty(id), "id为空");
+        Map<Object, Object> user = userDao.getUser(id);
+        return Object2MapUtil.mapToObjectByJson(user, User.class);
     }
 }

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tiger.eureka.client.dao.ConsumptionTypeDao">
+    <resultMap id="consumptionType" type="com.tiger.eureka.client.model.ConsumptionType">
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result column="name" property="name"/>
+        <result property="desc" column="desc"/>
+    </resultMap>
+
+    <select id="selectAll" resultMap="consumptionType">
+        select `id`, `name`, `desc` from `consumption_type`;
+    </select>
+
+    <select id="selectById" resultMap="consumptionType" parameterType="integer">
+        select `id`, 'name', `desc` from `consumption_type` where `id`=#{id};
+    </select>
+
+    <insert id="insert" parameterType="com.tiger.eureka.client.model.ConsumptionType">
+        insert into `consumption_type`(`name`, `desc`) values(#{name}, #{desc});
+    </insert>
+
+    <delete id="delete">
+        delete from `consumption_type` where `id` = #{id};
+    </delete>
+
+    <update id="update" parameterType="com.tiger.eureka.client.model.ConsumptionType">
+        update `consumption_type` set `name` = #{name}, `desc` = #{desc} where `id` = #{id};
+    </update>
+</mapper>

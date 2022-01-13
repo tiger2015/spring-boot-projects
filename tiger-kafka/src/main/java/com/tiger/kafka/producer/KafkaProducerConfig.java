@@ -22,8 +22,7 @@ public class KafkaProducerConfig {
     @Autowired
     private KafkaProperties properties;
 
-
-    public ProducerFactory producerFactory() {
+    private ProducerFactory producerFactory() {
         ProducerFactory factory = new DefaultKafkaProducerFactory(properties.buildProducerProperties());
         return factory;
     }

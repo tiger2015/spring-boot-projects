@@ -12,7 +12,7 @@ public class UserDaoImpl implements UserDao {
 
     private static final String USER_KEY = "user:%s:hash";
 
-    @Autowired()
+    @Autowired
     @Qualifier(value = "template")
     private RedisTemplate<String, Object> redisTemplate;
 

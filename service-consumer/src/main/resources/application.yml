@@ -1,0 +1,9 @@
+server:
+  port: 8000
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.100.201:8081/eureka/,http://192.168.100.201:8082/eureka/,http://192.168.100.201:8083/eureka/
+spring:
+  application:
+    name: consumer

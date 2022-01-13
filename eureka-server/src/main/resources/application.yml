@@ -1,0 +1,19 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: server01
+
+
+eureka:
+  instance:
+    hostname: server01
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8081/eureka/,http://localhost:8082/eureka/,http://localhost:8083/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+
+logging:
+  config: classpath:log4j2.xml

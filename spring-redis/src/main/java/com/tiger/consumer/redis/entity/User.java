@@ -1,13 +1,14 @@
 package com.tiger.consumer.redis.entity;
 
 import java.io.Serializable;
+import java.util.Set;
 
 public class User implements Serializable {
-
     private static final long serialVersionUID = 3515167461747527353L;
     private String name;
     private int age;
-    private double salary;
+    private Set<String> favorites;
+    private Job job;
 
     public String getName() {
         return name;
@@ -25,11 +26,19 @@ public class User implements Serializable {
         this.age = age;
     }
 
-    public double getSalary() {
-        return salary;
+    public Job getJob() {
+        return job;
     }
 
-    public void setSalary(double salary) {
-        this.salary = salary;
+    public void setJob(Job job) {
+        this.job = job;
+    }
+
+    public Set<String> getFavorites() {
+        return favorites;
+    }
+
+    public void setFavorites(Set<String> favorites) {
+        this.favorites = favorites;
     }
 }

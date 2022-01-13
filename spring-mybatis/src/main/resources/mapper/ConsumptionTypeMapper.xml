@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tiger.springboot.mybatis.dao.ConsumptionDao">
+    <resultMap id="consumptionType" type="com.tiger.springboot.mybatis.model.ConsumptionType">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name"/>
+        <result column="desc" property="desc"/>
+    </resultMap>
+    <select id="selectAll" resultMap="consumptionType">
+        select `id`,`name`,`desc` from consumption_type;
+    </select>
+</mapper>

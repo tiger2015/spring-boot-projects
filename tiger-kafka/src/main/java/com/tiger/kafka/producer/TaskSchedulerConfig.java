@@ -1,5 +1,6 @@
 package com.tiger.kafka.producer;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +23,8 @@ import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 @Profile("producer")
 @EnableScheduling
 @EnableAsync
+@Slf4j
 public class TaskSchedulerConfig implements SchedulingConfigurer {
-    private static final Logger LOG = LoggerFactory.getLogger(TaskSchedulerConfig.class);
 
     @Autowired
     private TaskSchedulingProperties taskSchedulingProperties;
@@ -31,7 +32,7 @@ public class TaskSchedulerConfig implements SchedulingConfigurer {
     @Override
     public void configureTasks(ScheduledTaskRegistrar taskRegistrar) {
         taskRegistrar.setScheduler(getThreadPoolTaskScheduler());
-        LOG.info("configure task");
+        log.info("configure task");
     }
 
     public ThreadPoolTaskScheduler getThreadPoolTaskScheduler() {

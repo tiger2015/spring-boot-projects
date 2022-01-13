@@ -1,6 +1,6 @@
 package com.tiger;
 
-import com.tiger.service.CustomUserDetailsService;
+import com.tiger.task.CustomUserDetailsService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;

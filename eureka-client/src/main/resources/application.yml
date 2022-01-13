@@ -1,0 +1,30 @@
+server:
+  port: 9000
+  servlet:
+    context-path: /consumptionType
+eureka:
+  client:
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://192.168.100.201:8081/eureka/
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+spring:
+  application:
+    name: consumptionType-service
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.100.1:3306/test?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: test
+    password: test
+    hikari:
+      maximum-pool-size: 8
+      minimum-idle: 4
+      idle-timeout: 3000
+      auto-commit: true
+mybatis:
+  config-location: classpath:mybatis-config.xml
+  mapper-locations:
+    - classpath:mapper/*.xml
+  type-aliases-package: com.tiger.eureka.client.model

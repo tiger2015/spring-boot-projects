@@ -3,7 +3,7 @@ package com.tiger;
 import com.tiger.handler.CustomAuthenticationFailureHandler;
 import com.tiger.handler.CustomAuthenticationSuccessHandler;
 import com.tiger.handler.CustomLogoutSuccessHandler;
-import com.tiger.service.CustomUserDetailsService;
+import com.tiger.task.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.access.hierarchicalroles.RoleHierarchy;

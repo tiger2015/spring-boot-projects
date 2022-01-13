@@ -1,6 +1,14 @@
 # redis
 spring:
   redis:
-    host: 192.168.100.201
-    port: 6379
+    host: 192.168.100.6
+    port: 6479
     password: tiger
+    lettuce:
+      pool:
+        max-wait: 3000
+        max-active: 8
+        min-idle: 4
+        max-idle: 4
+logging:
+  config: classpath:log4j2.xml

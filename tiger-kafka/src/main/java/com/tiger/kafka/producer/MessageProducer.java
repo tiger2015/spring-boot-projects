@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import org.springframework.util.concurrent.ListenableFutureCallback;
 
 /**
  * @Auther: Zeng Hu
@@ -25,20 +26,44 @@ public class MessageProducer {
     @Qualifier("kafkaTemplate")
     private KafkaTemplate template;
 
-    @Value("${kafka.producer.topic}")
+    @Value("${spring.kafka.producer.topic}")
     private String topic;
 
 
-    @Scheduled(fixedRate = 100)
+    @Scheduled(fixedRate = 50)
     public void sendMessage() {
         long current = System.currentTimeMillis();
-        template.send(topic, "msg1", "msg1-" + current);
+
+        /**
+        for (int i = 0; i < 100; i++) {
+            template.send(topic, "msg-"+i, "msg1-"+current);
+        }
+         **/
+
+
+
+
+        template.send(topic, "msg1", "msg1-" + current).addCallback(new ListenableFutureCallback() {
+            @Override
+            public void onFailure(Throwable throwable) {
+                LOG.error("error", throwable);
+            }
+
+            @Override
+            public void onSuccess(Object o) {
+
+            }
+        });
         LOG.info("send msg1");
+
+
     }
 
-    @Scheduled(fixedRate = 100)
+   // @Scheduled(fixedRate = 50)
     public void sendMessage2() {
         long current = System.currentTimeMillis();
+
+
         template.send(topic, "msg2", "msg2-" + current);
         LOG.info("send msg2");
     }

@@ -1,8 +1,8 @@
 package com.tiger;
 
 import com.tiger.entity.SysPersmission;
-import com.tiger.service.SysPermissionService;
-import com.tiger.service.SysRoleService;
+import com.tiger.task.SysPermissionService;
+import com.tiger.task.SysRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.PermissionEvaluator;
 import org.springframework.security.core.Authentication;
