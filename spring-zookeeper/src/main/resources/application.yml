@@ -1,0 +1,11 @@
+zookeeper:
+  nodes: 192.168.100.6:2181
+  session-timeout: 10s
+  connection-timeout: 10s
+  retry:
+    forever:
+      retry-interval: 3000
+
+logging:
+  level:
+    root: info
