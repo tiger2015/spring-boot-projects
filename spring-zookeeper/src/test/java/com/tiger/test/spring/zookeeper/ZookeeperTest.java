@@ -193,15 +193,27 @@ public class ZookeeperTest {
     }
 
     @Test
-    public void semaphoreTest(){
-        InterProcessSemaphoreV2 semaphore = new InterProcessSemaphoreV2(curatorFramework,"/semaphore", 2);
+    public void semaphoreTest() {
+        InterProcessSemaphoreV2 semaphore = new InterProcessSemaphoreV2(curatorFramework, "/semaphore", 2);
         Lease acquire = null;
         try {
-             acquire = semaphore.acquire();
+            acquire = semaphore.acquire();
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             semaphore.returnLease(acquire);
         }
+    }
+
+    @Test
+    public void storeTest() {
+        int i = 0x123456;
+
+        System.out.printf("%x\r\n", i & 0xff);
+        System.out.printf("%x\r\n",(i >> 8) & 0xff);
+        System.out.printf("%x\r\n", (i >> 16) & 0xff);
+
+
+
     }
 }

@@ -19,6 +19,7 @@
         <module>qr-login</module>
         <module>spring-boot-auto-starter</module>
         <module>spring-zookeeper</module>
+        <module>spring-pulsar</module>
     </modules>
 
     <name>spring-boot-projects</name>
@@ -57,7 +58,11 @@
         <hutool.version>5.6.3</hutool.version>
         <google.zxing.version>3.3.3</google.zxing.version>
 
-        <curator.version>4.2.0</curator.version>
+        <curator.version>5.1.0</curator.version>
+
+        <pulsar.version>2.8.0</pulsar.version>
+        <zookeeper.version>3.7.0</zookeeper.version>
+
     </properties>
 
     <dependencies>
@@ -280,7 +285,7 @@
             <dependency>
                 <groupId>org.apache.zookeeper</groupId>
                 <artifactId>zookeeper</artifactId>
-                <version>3.5.7</version>
+                <version>${zookeeper.version}</version>
                 <exclusions>
                     <exclusion>
                         <groupId>org.slf4j</groupId>
@@ -296,9 +301,12 @@
                     </exclusion>
                 </exclusions>
             </dependency>
-
+            <dependency>
+                <groupId>org.apache.pulsar</groupId>
+                <artifactId>pulsar-client</artifactId>
+                <version>${pulsar.version}</version>
+            </dependency>
         </dependencies>
-
     </dependencyManagement>
     <build>
         <pluginManagement>

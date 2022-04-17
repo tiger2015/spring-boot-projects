@@ -22,12 +22,13 @@ public class UserDaoImpl implements UserDao {
         return true;
     }
 
+
     @Override
     public boolean updateUser(String id, Map<String, Object> user) {
         redisTemplate.opsForHash().putAll(String.format(USER_KEY, id), user);
         return true;
     }
-
+    
     @Override
     public boolean deleteUser(String id) {
         return redisTemplate.delete(String.format(USER_KEY, id));

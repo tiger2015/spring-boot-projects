@@ -46,7 +46,7 @@ public class RedisConfig {
 
 
 
-    @Bean
+    //@Bean
     public StreamMessageListenerContainer listenerContainer() {
 
         StreamMessageListenerContainer.StreamMessageListenerContainerOptions<String, ObjectRecord<String, String>> listenerContainerOptions = StreamMessageListenerContainer.StreamMessageListenerContainerOptions.builder()

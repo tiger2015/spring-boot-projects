@@ -1,7 +1,6 @@
 package com.tiger.spring.zookeeper;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Configuration;
 
 import java.time.Duration;
 
@@ -12,7 +11,6 @@ import java.time.Duration;
  * @Version: 1.0
  **/
 @ConfigurationProperties(prefix = "zookeeper")
-@Configuration
 public class CuratorProperties {
 
     private String nodes;

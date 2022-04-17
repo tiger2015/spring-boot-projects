@@ -13,6 +13,7 @@ import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 import org.springframework.kafka.listener.ConcurrentMessageListenerContainer;
 import org.springframework.kafka.listener.ContainerProperties;
+import org.springframework.kafka.support.TopicPartitionOffset;
 
 /**
  * @Auther: Zeng Hu
@@ -37,12 +38,22 @@ public class KafkaConsumerConfig {
 
     @Bean
     public ConcurrentMessageListenerContainer listenerContainer() {
-        ContainerProperties containerProperties = new ContainerProperties(topics);
+
+        // 消费指定的分区
+        TopicPartitionOffset p0 = new TopicPartitionOffset(topics[0], 1);
+        TopicPartitionOffset p1 = new TopicPartitionOffset(topics[0], 2);
+
+         ContainerProperties containerProperties = new ContainerProperties(topics);
+        //ContainerProperties containerProperties = new ContainerProperties(p0, p1);
         containerProperties.setMessageListener(new MyBatchMessageListener());
         containerProperties.setAckMode(ContainerProperties.AckMode.BATCH);
-       // containerProperties.setConsumerRebalanceListener();
+        // containerProperties.setConsumerRebalanceListener();
+
+
         ConcurrentMessageListenerContainer container = new ConcurrentMessageListenerContainer(consumerFactory(),
                 containerProperties);
+
+
         container.setConcurrency(concurency);
         return container;
     }
@@ -61,7 +72,11 @@ public class KafkaConsumerConfig {
     }
 
     public ConsumerFactory consumerFactory() {
+
         ConsumerFactory factory = new DefaultKafkaConsumerFactory(properties.buildConsumerProperties());
+
+
+
         return factory;
     }
 }

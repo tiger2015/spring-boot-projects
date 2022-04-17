@@ -2,9 +2,12 @@ spring:
   kafka:
     producer:
       topic: test
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      key-serializer: com.tiger.kafka.serializer.KryoKafkaSerializer
+      value-serializer: com.tiger.kafka.serializer.KryoKafkaSerializer
       acks: 1
+      properties:
+        key-type: java.lang.Long
+        value-type: com.tiger.kafka.entity.User
   task:
     scheduling:
       pool:

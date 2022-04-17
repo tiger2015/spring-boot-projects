@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
+import org.springframework.stereotype.Component;
 
 import java.util.concurrent.TimeUnit;
 
@@ -16,16 +17,20 @@ import java.util.concurrent.TimeUnit;
  * @Description
  * @Version: 1.0
  **/
-//@Component
+@Component
 @Order(100)
 @Slf4j
 public class MyRunner implements ApplicationRunner {
     @Autowired
     private CuratorFramework curatorFramework;
 
+    @Autowired
+    private RetryTest retryTest;
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        
+
+        retryTest.retry();
 
 
         new Thread(new Runnable() {
@@ -44,6 +49,7 @@ public class MyRunner implements ApplicationRunner {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
+
                 }
 
 
@@ -57,8 +63,6 @@ public class MyRunner implements ApplicationRunner {
         mutex.acquire();
         log.info("acquire lock======");
         mutex.release();
-
-
 
 
     }

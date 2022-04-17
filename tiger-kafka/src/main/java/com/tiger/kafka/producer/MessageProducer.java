@@ -1,5 +1,6 @@
 package com.tiger.kafka.producer;
 
+import com.tiger.kafka.entity.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,11 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.util.concurrent.ListenableFutureCallback;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * @Auther: Zeng Hu
@@ -29,42 +35,36 @@ public class MessageProducer {
     @Value("${spring.kafka.producer.topic}")
     private String topic;
 
+    private AtomicLong index = new AtomicLong(0);
 
-    @Scheduled(fixedRate = 50)
+
+    @Scheduled(fixedRate = 1000)
     public void sendMessage() {
         long current = System.currentTimeMillis();
 
         /**
-        for (int i = 0; i < 100; i++) {
-            template.send(topic, "msg-"+i, "msg1-"+current);
-        }
+         for (int i = 0; i < 100; i++) {
+         template.send(topic, "msg-"+i, "msg1-"+current);
+         }
          **/
+        User user = new User();
+        user.setId(index.getAndIncrement());
+        user.setName("admin-" + index.get());
+        user.setBirthday(LocalDate.now());
+        user.setFavorites(new ArrayList<>(Arrays.asList("basketball", "hiking")));
+        user.setSalary(3500);
 
-
-
-
-        template.send(topic, "msg1", "msg1-" + current).addCallback(new ListenableFutureCallback() {
+        template.send(topic, user.getId(), user).addCallback(new ListenableFutureCallback() {
             @Override
-            public void onFailure(Throwable throwable) {
-                LOG.error("error", throwable);
+            public void onFailure(Throwable ex) {
+                LOG.error("send msg fail", ex);
             }
 
             @Override
-            public void onSuccess(Object o) {
-
+            public void onSuccess(Object result) {
+                LOG.info("send msg success");
             }
         });
-        LOG.info("send msg1");
 
-
-    }
-
-   // @Scheduled(fixedRate = 50)
-    public void sendMessage2() {
-        long current = System.currentTimeMillis();
-
-
-        template.send(topic, "msg2", "msg2-" + current);
-        LOG.info("send msg2");
     }
 }

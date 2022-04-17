@@ -1,11 +1,9 @@
 zookeeper:
   nodes: 192.168.100.6:2181
-  session-timeout: 10s
-  connection-timeout: 10s
+  session-timeout: 3s
+  connection-timeout: 3s
   retry:
     forever:
       retry-interval: 3000
-
 logging:
-  level:
-    root: info
+  config: classpath:log4j2.xml

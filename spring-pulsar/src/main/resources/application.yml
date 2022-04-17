@@ -1,0 +1,9 @@
+pulsar:
+  service-url: pulsar://192.168.100.6:6650
+  connection-timeout: 3s
+  tenant: test
+  namespace: test
+  topic: test-tp
+  subscription-name: my-subscription
+logging:
+  config: classpath:log4j2.xml

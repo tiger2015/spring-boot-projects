@@ -5,7 +5,10 @@ spring:
   kafka:
     consumer:
       group-id: test
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      key-deserializer: com.tiger.kafka.serializer.KryoKafkaDeserializer
+      value-deserializer: com.tiger.kafka.serializer.KryoKafkaDeserializer
       max-poll-records: 1000
       auto-offset-reset: earliest
+      properties:
+        key-type: java.lang.Long
+        value-type: com.tiger.kafka.entity.User

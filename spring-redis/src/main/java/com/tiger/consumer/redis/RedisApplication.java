@@ -1,17 +1,16 @@
 package com.tiger.consumer.redis;
 
-import com.tiger.consumer.redis.entity.User;
-import com.tiger.consumer.redis.service.UserServiceImpl;
+import com.tiger.task.EnableTask;
+import com.tiger.task.LoadTask;
 import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
-import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.util.Assert;
 
 @SpringBootApplication
 @EnableScheduling
+@EnableTask
 public class RedisApplication {
 
     public static void main(String[] args) {
@@ -32,8 +31,9 @@ public class RedisApplication {
         //JedisConnectionFactory bean2 = RedisSpringContext.getBean(JedisConnectionFactory.class);
         //Assert.notNull(bean2, "jedis null");
 
+        LoadTask bean = RedisSpringContext.getBean(LoadTask.class);
 
-
+        Assert.notNull(bean, "null");
 
 
     }

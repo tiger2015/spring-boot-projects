@@ -3,8 +3,6 @@ package com.tiger.kafka.consumer;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.common.TopicPartition;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.kafka.listener.AbstractConsumerSeekAware;
 import org.springframework.kafka.listener.BatchMessageListener;
 
@@ -40,7 +38,8 @@ public class MyBatchMessageListener<K, V> extends AbstractConsumerSeekAware impl
     public void onPartitionsAssigned(Map<TopicPartition, Long> assignments, ConsumerSeekCallback callback) {
          assignments.keySet().forEach(tp->this.callbacks.put(tp, this.callbackThreadLocal.get()));
          log.info("partition assigned");
-         callback.seekToEnd(assignments.keySet());
+       // callback.seekToEnd(assignments.keySet());
+
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.tiger.spring.zookeeper;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.curator.RetryPolicy;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
@@ -7,7 +8,8 @@ import org.apache.curator.retry.ExponentialBackoffRetry;
 import org.apache.curator.retry.RetryForever;
 import org.apache.curator.retry.RetryNTimes;
 import org.apache.curator.retry.RetryUntilElapsed;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.util.ObjectUtils;
@@ -19,10 +21,16 @@ import org.springframework.util.ObjectUtils;
  * @Version: 1.0
  **/
 @Configuration
+@EnableConfigurationProperties(value = {CuratorProperties.class})
+@ConditionalOnProperty(prefix = "zookeeper", name = {"nodes"})
+@Slf4j
 public class ApplicationConfig {
 
-    @Autowired
     private CuratorProperties curatorProperties;
+
+    public ApplicationConfig(CuratorProperties curatorProperties) {
+        this.curatorProperties = curatorProperties;
+    }
 
     @Bean(initMethod = "start", destroyMethod = "close")
     public CuratorFramework curatorFramework() {
@@ -45,6 +53,7 @@ public class ApplicationConfig {
             retryPolicy = new RetryUntilElapsed(untilElapsed.getMaxElapsedTimeMs(), untilElapsed.getSleepMsBetweenRetries());
         }
         builder.retryPolicy(retryPolicy);
+        log.info("create curator framework");
 
         return builder.build();
     }

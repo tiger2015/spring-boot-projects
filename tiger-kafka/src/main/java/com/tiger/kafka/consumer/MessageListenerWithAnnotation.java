@@ -4,7 +4,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.context.annotation.Profile;
 import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -14,7 +13,7 @@ import java.util.List;
  * @Description:
  * @Version: 1.0
  **/
-@Component
+//@Component
 @Profile("consumer")
 @Slf4j
 public class MessageListenerWithAnnotation {
