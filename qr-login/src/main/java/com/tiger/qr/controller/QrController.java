@@ -37,7 +37,7 @@ public class QrController {
         response.setDateHeader("Expires", 0);
         response.setHeader("Content-Type", "image/jpeg");
 
-        String content="http://192.168.1.101/";
+        String content="http://192.168.100.6/";
         String uuid = UUID.randomUUID().toString();
         response.setHeader("uuid", uuid);
         response.addHeader("Access-Control-Expose-Headers", "uuid");

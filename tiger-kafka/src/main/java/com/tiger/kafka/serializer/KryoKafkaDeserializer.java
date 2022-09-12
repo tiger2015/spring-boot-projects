@@ -55,6 +55,7 @@ public class KryoKafkaDeserializer<T> implements Deserializer<T> {
     public void configure(Map<String, ?> configs, boolean isKey) {
         Object objType = isKey ? configs.get(DESERIALIZER_KEY_TYPE) : configs.get(DESERIALIZER_VALUE_TYPE);
         if (objType instanceof String) {
+
             String clsName = (String) objType;
             try {
                 cls = Class.forName(clsName);

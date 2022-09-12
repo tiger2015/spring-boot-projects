@@ -66,5 +66,14 @@ public class MessageProducer {
             }
         });
 
+//        try {
+//            template.send(topic,user.getId(),user).get();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        } catch (ExecutionException e) {
+//            e.printStackTrace();
+//        }
+
+
     }
 }

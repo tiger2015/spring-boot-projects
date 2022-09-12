@@ -1,8 +1,8 @@
 spring:
   profiles:
-    active: consumer
+    active: producer
   kafka:
-    bootstrap-servers: 192.168.100.6:9092
+    bootstrap-servers: 192.168.100.6:9092，192.168.100.6:9093
 #    properties:
 #      sasl:
 #        mechanism: SCRAM-SHA-256

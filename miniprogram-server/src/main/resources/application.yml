@@ -1,0 +1,11 @@
+server:
+  port: 8000
+  undertow:
+    io-threads: 4
+    worker-threads: 8
+    buffer-size: 1024
+  ssl:
+    protocol: tls
+    key-password: tiger123
+    key-alias: miniprogram
+    key-store: classpath:miniserver.pl2

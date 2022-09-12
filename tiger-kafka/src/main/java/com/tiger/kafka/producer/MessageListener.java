@@ -1,9 +1,8 @@
 package com.tiger.kafka.producer;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.kafka.support.ProducerListener;
 
 /**
@@ -12,15 +11,17 @@ import org.springframework.kafka.support.ProducerListener;
  * @Description:
  * @Version: 1.0
  **/
+@Slf4j
 public class MessageListener implements ProducerListener {
-    private static final Logger LOG = LoggerFactory.getLogger(MessageListener.class);
 
     @Override
     public void onError(ProducerRecord producerRecord, Exception exception) {
+        log.info("send message error");
 
     }
 
     @Override
     public void onSuccess(ProducerRecord producerRecord, RecordMetadata recordMetadata) {
+        log.info("send message success");
     }
 }
