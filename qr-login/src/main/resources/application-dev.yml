@@ -1,0 +1,10 @@
+spring:
+  redis:
+    host: 192.168.100.6
+    port: 6379
+    password: tiger
+    lettuce:
+      pool:
+        max-wait: 3000
+        min-idle: 4
+        max-active: 8

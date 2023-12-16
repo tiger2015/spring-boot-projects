@@ -12,9 +12,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class KafkaApplication {
 
+    static {
+        System.setProperty("log4j2.contextSelector", "org.apache.logging.log4j.core.async.AsyncLoggerContextSelector");
+    }
+
     public static void main(String[] args) {
         SpringApplication application = new SpringApplication(KafkaApplication.class);
         application.run(args);
     }
-
 }

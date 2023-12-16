@@ -37,7 +37,7 @@ public class WebSocketServer {
         this.session = session;
         webSocketSet.add(this);
         long count = counter.incrementAndGet();
-        LOG.info("连接：{}", sid);
+        LOG.info("连接：{} websocket session:{}", sid, session.getId());
         LOG.info("当前人数：{}", count);
         this.sid = sid;
     }

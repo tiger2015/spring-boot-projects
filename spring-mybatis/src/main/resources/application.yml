@@ -1,4 +1,22 @@
-mybatis:
-  config: mybatis-config.xml
+#mybatis:
+#  config: mybatis-config.xml
+
+
+
 logging:
   config: classpath:log4j2.xml
+server:
+  port: 9001
+  servlet:
+    context-path: /
+mybatis-plus:
+  mapper-locations: classpath*:mapper/*Mapper.xml
+spring:
+  datasource:
+    url: jdbc:postgresql://192.168.100.8:5432/test
+    password: test
+    username: test
+    hikari:
+      maximum-pool-size: 16
+      minimum-idle: 8
+    driver-class-name: org.postgresql.Driver

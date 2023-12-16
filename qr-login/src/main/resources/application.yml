@@ -1,12 +1,16 @@
+
+
 server:
-  port: 9000
+  port: 9006
   servlet:
     context-path: /qr
   undertow:
-    io-threads: 4
-    worker-threads: 8
-    buffer-size: 1024
+    io-threads: 1
+    worker-threads: 1
+    buffer-size: 8196
 logging:
   config: classpath:log4j2.xml
-
+spring:
+  profiles:
+    active: dev
 

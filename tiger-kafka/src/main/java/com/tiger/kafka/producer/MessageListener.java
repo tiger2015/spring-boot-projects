@@ -22,6 +22,6 @@ public class MessageListener implements ProducerListener {
 
     @Override
     public void onSuccess(ProducerRecord producerRecord, RecordMetadata recordMetadata) {
-        log.info("send message success");
+        log.info("send message success, partition-{}", recordMetadata.partition());
     }
 }

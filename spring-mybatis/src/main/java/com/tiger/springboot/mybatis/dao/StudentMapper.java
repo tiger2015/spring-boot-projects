@@ -1,6 +1,7 @@
 package com.tiger.springboot.mybatis.dao;
 
-import com.tiger.springboot.mybatis.model.Student;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.tiger.springboot.mybatis.model.po.StudentPo;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -10,10 +11,6 @@ import org.apache.ibatis.annotations.Mapper;
  * @Version: 1.0
  **/
 @Mapper
-public interface StudentDao {
-    Student selectById(Integer id);
+public interface StudentMapper extends BaseMapper<StudentPo> {
 
-    int insert(Student student);
-
-    int update(Student student);
 }

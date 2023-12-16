@@ -8,7 +8,8 @@
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout pattern="${pattern}"/>
         </Console>
-        <RollingFile name="RollingFile" fileName="${log_dir}/app.log" filePattern="${log_dir}/app-%d{yyyy-MM-dd-HH}.log.gzip">
+        <RollingFile name="RollingFile" fileName="${log_dir}/app.log"
+                     filePattern="${log_dir}/app-%d{yyyy-MM-dd-HH}.log.gzip" createOnDemand="true" append="true">
             <PatternLayout pattern="${pattern}"/>
             <Policies>
                 <TimeBasedTriggeringPolicy/>
@@ -16,7 +17,9 @@
         </RollingFile>
     </Appenders>
     <Loggers>
-        <Logger name="com.tiger.springboot.mybatis.dao" level="trace"/>
+        <Logger name="com.tiger.springboot.mybatis.dao" level="trace" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>
         <Root level="info">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="RollingFile"/>

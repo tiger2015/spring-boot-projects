@@ -11,7 +11,7 @@ import java.util.List;
  * @Description:
  * @Version: 1.0
  **/
-@Mapper
+//@Mapper
 public interface ConsumptionDao {
 
     List<ConsumptionType> selectAll();

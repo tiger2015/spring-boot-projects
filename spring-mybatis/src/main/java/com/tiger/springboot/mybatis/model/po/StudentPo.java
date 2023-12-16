@@ -1,4 +1,8 @@
-package com.tiger.springboot.mybatis.model;
+package com.tiger.springboot.mybatis.model.po;
+
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.io.Serializable;
 
@@ -8,9 +12,11 @@ import java.io.Serializable;
  * @Description:
  * @Version: 1.0
  **/
-public class Student implements Serializable {
+@TableName("student")
+public class StudentPo implements Serializable {
     private static final long serialVersionUID = -7636271292310455907L;
 
+    @TableId(type = IdType.AUTO)
     private Integer id;
     private String name;
     private Short age;

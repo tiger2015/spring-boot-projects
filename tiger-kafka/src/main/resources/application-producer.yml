@@ -1,11 +1,11 @@
 spring:
   kafka:
     producer:
-      topic: test
-      key-serializer: com.tiger.kafka.serializer.KryoKafkaSerializer
-      value-serializer: com.tiger.kafka.serializer.KryoKafkaSerializer
+      topic: t1
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
       acks: 1
-      compression-type: snappy
+      compression-type: none
       properties:
         key-type: java.lang.Long
         value-type: com.tiger.kafka.entity.User

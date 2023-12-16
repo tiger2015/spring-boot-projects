@@ -2,10 +2,10 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.tiger.springboot.mybatis.dao.StudentDao">
+<mapper namespace="com.tiger.springboot.mybatis.dao.StudentMapper">
     <!-- 开启二级缓存 -->
     <cache/>
-    <resultMap id="student" type="com.tiger.springboot.mybatis.model.Student">
+    <resultMap id="student" type="com.tiger.springboot.mybatis.model.po.StudentPo">
         <id column="id" property="id" jdbcType="INTEGER"/>
         <result column="name" property="name"/>
         <result column="age" property="age"/>
@@ -15,11 +15,11 @@
         select `id`, `name`, `age` from  `student` where `id` = #{id};
     </select>
 
-    <insert id="insert" parameterType="com.tiger.springboot.mybatis.model.Student">
+    <insert id="insert" parameterType="com.tiger.springboot.mybatis.model.po.StudentPo">
         insert into `student`(`name`, `age`) values(#{name}, #{age});
     </insert>
 
-    <update id="update" parameterType="com.tiger.springboot.mybatis.model.Student">
+    <update id="update" parameterType="com.tiger.springboot.mybatis.model.po.StudentPo">
         update `student` set `name` = #{name} where `id` = #{id}
     </update>
 </mapper>

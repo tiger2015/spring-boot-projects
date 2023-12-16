@@ -12,4 +12,3 @@ spring:
 #        protocol: SASL_PLAINTEXT
 logging:
   config: classpath:log4j2.xml
-

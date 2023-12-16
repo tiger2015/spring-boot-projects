@@ -1,17 +1,18 @@
-package com.tiger.spring.load;
+package com.tiger.springboot.mybatis;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * @Author Zenghu
- * @Date 2022年06月11日 21:55
+ * @Date 2023年08月15日 22:29
  * @Description
  * @Version: 1.0
  **/
 @SpringBootApplication
-public class LoadApp {
+public class MyBatisTestApplication {
+
     public static void main(String[] args) {
-        SpringApplication.run(LoadApp.class, args);
+        SpringApplication.run(MyBatisTestApplication.class, args);
     }
 }

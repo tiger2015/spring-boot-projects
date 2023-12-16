@@ -1,6 +1,5 @@
 package com.tiger.kafka.producer;
 
-import com.tiger.kafka.entity.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,11 +9,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import org.springframework.util.concurrent.ListenableFutureCallback;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
@@ -38,15 +33,18 @@ public class MessageProducer {
     private AtomicLong index = new AtomicLong(0);
 
 
-    @Scheduled(fixedRate = 1000)
+    @Scheduled(fixedDelay = 1000)
     public void sendMessage() {
         long current = System.currentTimeMillis();
+        String hex="D3008A43249D2A6C69A00020A405218400000000202000007FFFA2A5A622A326A226948720AD110AA4D65E89F987F0FC28E85026A9ED46059A4AED9D7539E657C4ACF116223218C77199FE023BF78D80269200986CFA4D43E8B82056890155A887387A1CB9D857B0A15E55849A0012A8BF7F875DECA4FFFFFFFFFFFFFFFF8000698E16DD4E59E77DD565A5D8009293F3";
+
+         for (int i = 0; i < 1; i++) {
+         template.send(topic, null, hex);
+         }
+
+       //  LOG.info("finish send message");
 
         /**
-         for (int i = 0; i < 100; i++) {
-         template.send(topic, "msg-"+i, "msg1-"+current);
-         }
-         **/
         User user = new User();
         user.setId(index.getAndIncrement());
         user.setName("admin-" + index.get());
@@ -66,6 +64,7 @@ public class MessageProducer {
             }
         });
 
+         **/
 //        try {
 //            template.send(topic,user.getId(),user).get();
 //        } catch (InterruptedException e) {

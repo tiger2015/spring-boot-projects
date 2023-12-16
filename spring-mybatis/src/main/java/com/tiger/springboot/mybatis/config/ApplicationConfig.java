@@ -20,7 +20,7 @@ import java.io.InputStream;
  * @Description:
  * @Version: 1.0
  **/
-@Configuration()
+//@Configuration()
 public class ApplicationConfig {
 
     @Value("${mybatis.config}")
