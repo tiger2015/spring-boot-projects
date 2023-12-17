@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: stock-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.100.8:8488
+        username: nacos
+        password: nacos
+        namespace: SEATA
+  datasource:
+    druid:
+      db-type: postgres
+      driver-class-name: org.postgresql.Driver
+      url: jdbc:postgresql://127.0.0.1:5432/postgres
+      username: postgres
+      password: postgres
+      initial-size: 4
+      max-active: 8
+      min-idle: 4
+    type: com.alibaba.druid.pool.DruidDataSource
+
+mybatis-plus:
+  config-location: classpath:/mapper/**.xml
+  type-aliases-package: com.tiger.seata.stock.model
